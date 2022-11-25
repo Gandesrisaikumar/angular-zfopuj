@@ -1,0 +1,46 @@
+<div style="display: flex;justify-content: space-between;">
+  <div
+    style="border: 1px solid lightgray;
+  padding: 5px;
+  border-radius: 5px;"
+  >
+    Amount : ${{ totalAmt }}
+  </div>
+  <div
+    style="border: 1px solid lightgray;
+  padding: 5px;
+  border-radius: 5px;"
+  >
+    Timer : {{ remainingTime }}
+  </div>
+</div>
+<div
+  style="display: flex;justify-content: space-evenly;padding:20px;flex-wrap:wrap"
+>
+  <div
+    *ngFor="let each of [1, 2, 3, 4, 5, 6]; let indx = index"
+    style="padding: 10px;"
+  >
+    <div
+      class="echBox"
+      [ngClass]="disbleActions ? 'disblDiv' : ''"
+      (click)="addBetAmt(indx)"
+    >
+      <div>Dice {{ each }}</div>
+      <div>Bet : ${{ betAmt[indx] ? betAmt[indx] : 0 }}</div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="dicenum && remainingTime == 0">
+  <div style="margin-top:10px">Result Dice : {{ dicenum }}</div>
+  <div style="margin-top:10px">Amount Won : ${{ plusAmt }}</div>
+  <div style="margin-top:10px">Amount loss : ${{ lossAmt }}</div>
+
+  <!-- <div
+    style="margin-top:50px;display:flex;justify-content:center"
+    *ngIf="dicenum && remainingTime == 0"
+  >
+    <button (click)="start()">Start Game</button> -->
+  <!-- </div> -->
+</div>
